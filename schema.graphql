@@ -35,3 +35,12 @@ type PlayerEntered @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type Game @entity {
+  id: ID!
+  maxPlayers: Int! # uint8
+  entryFee: BigInt! # uint256
+  winner: Bytes
+  requestId: Bytes
+  players: [Bytes!]!
+}
