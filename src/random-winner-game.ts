@@ -43,19 +43,7 @@ export function handleGameStarted(event: GameStartedEvent): void {
 
 export function handleOwnershipTransferred(
   event: OwnershipTransferredEvent
-): void {
-  let entity = new OwnershipTransferred(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.previousOwner = event.params.previousOwner
-  entity.newOwner = event.params.newOwner
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
+): void {}
 
 export function handlePlayerEntered(event: PlayerEnteredEvent): void {
   let entity = Game.load(event.params.gameId.toString());
