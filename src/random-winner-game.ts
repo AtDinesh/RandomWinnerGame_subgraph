@@ -31,16 +31,12 @@ export function handleGameEnded(event: GameEndedEvent): void {
 }
 
 export function handleGameStarted(event: GameStartedEvent): void {
-  let entity = new GameStarted(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.gameId = event.params.gameId
-  entity.maxPlayers = event.params.maxPlayers
-  entity.entryFee = event.params.entryFee
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  let entity = Game.load(event.params.gameId.toString());
+  if (!entity) {
+    return;
+  }
+  entity.maxPlayers = event.params.maxPlayers;
+  entity.entryFee = event.params.entryFee;
 
   entity.save()
 }
