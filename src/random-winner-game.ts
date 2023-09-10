@@ -5,13 +5,7 @@ import {
   OwnershipTransferred as OwnershipTransferredEvent,
   PlayerEntered as PlayerEnteredEvent
 } from "../generated/RandomWinnerGame/RandomWinnerGame"
-import {
-  GameEnded,
-  GameStarted,
-  OwnershipTransferred,
-  PlayerEntered, 
-  Game
-} from "../generated/schema"
+import { Game } from "../generated/schema"
 
 export function handleGameEnded(event: GameEndedEvent): void {
   // Entities can be loaded from the store using a string ID; 
